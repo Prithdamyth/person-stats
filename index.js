@@ -7,11 +7,12 @@ function changedHeading(ev){
     const p = document.createElement('p')
     const age = f.personAge.value
     const div = document.querySelector('#stats')
+    const color = f.textColor.value;
     
     p.textContent = `${name}, ${age}`
     div.appendChild(p)
 
-    const color = document.getElementById("color").value;
+    //const color = document.getElementById("color").value;
     p.style.color = color;
 }
 
