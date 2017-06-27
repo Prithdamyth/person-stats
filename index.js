@@ -4,13 +4,15 @@ function changedHeading(ev){
     
     const f = ev.target
     const name = f.personName.value
-    const stat = document.querySelector('#hw')
+    const p = document.createElement('p')
     const age = f.personAge.value
+    const div = document.querySelector('#stats')
     
-    stat.textContent = name +': ' + age
+    p.textContent = `${name}, ${age}`
+    div.appendChild(p)
 
-    var color = document.getElementById("color").value;
-    stat.style.color = color;
+    const color = document.getElementById("color").value;
+    p.style.color = color;
 }
 
 const personForm = document.querySelector('#person-form')
