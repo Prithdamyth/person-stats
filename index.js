@@ -4,16 +4,28 @@ function changedHeading(ev){
     
     const f = ev.target
     const name = f.personName.value
-    const p = document.createElement('p')
+    const list = document.createElement('ul')
     const age = f.personAge.value
     const div = document.querySelector('#stats')
     const color = f.textColor.value;
+
+    const nameItem = document.createElement('li')
+    nameItem.textContent = `Name: ${name}`
+    list.appendChild(nameItem)
+
+    const ageItem = document.createElement('li')
+    ageItem.textContent = `Age: ${age}`
+    list.appendChild(ageItem)
     
-    p.textContent = `${name}, ${age}`
-    div.appendChild(p)
+    const colorItem = document.createElement('li')
+    colorItem.textContent = `Color: ${color}`
+    list.appendChild(colorItem)
+    
+    //list.textContent = `${name}, ${age}`
+    div.appendChild(list)
 
     //const color = document.getElementById("color").value;
-    p.style.color = color;
+    list.style.color = color;
 }
 
 const personForm = document.querySelector('#person-form')
