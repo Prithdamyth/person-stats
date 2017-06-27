@@ -1,24 +1,17 @@
-function changeHeading(ev){
-    
-}
-const p = document.querySelector('#stats p')
-p.style.display = 'none'
 
-function changeParagraph(ev){
+function changedHeading(ev){
     ev.preventDefault()
-    const f = ev.target
-    p.style.display = ''
-    const name = f.personName.value
-    const heading = document.querySelector('h1')
-    p.textContent += name
     
+    const f = ev.target
+    const name = f.personName.value
+    const stat = document.querySelector('#hw')
+    const age = f.personAge.value
+    
+    stat.textContent = name +': ' + age
+
+    var color = document.getElementById("color").value;
+    stat.style.color = color;
 }
-/*const btn = document.querySelector('button')
-btn.addEventListener('click', changeHeading)
 
-
-const p = document.querySelector('#instructions')
-p.addEventListener('click', changeHeading)*/
-
-const personForm = document.querySelector("#person-form1")
-personForm.addEventListener('submit', changeParagraph)
+const personForm = document.querySelector('#person-form')
+personForm.addEventListener('submit', changedHeading)
