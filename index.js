@@ -9,17 +9,12 @@ function changedHeading(ev){
     const div = document.querySelector('#stats')
     const color = f.textColor.value;
     
-    renderListItem(list, 'Name', name)
+    list.appendChild(renderListItem('Name', name))
     
-    renderListItem(list, 'Age', age)
-    
-    const colorItem = document.createElement('li')
-    colorItem.textContent = `Color: `
-
-    colorItem.appendChild(renderColor(color))
+    list.appendChild(renderListItem('Age', age))
 
     //colorItem.style.backgroundColor = color;
-    list.appendChild(colorItem)
+    list.appendChild(renderListItem('Color', color))
     
     //list.textContent = `${name}, ${age}`
     div.appendChild(list)
@@ -36,11 +31,14 @@ function renderColor(color){
    return colorDiv
 }
 
-function renderListItem(list, text, value){
+function renderListItem(text, value){
     const item = document.createElement('li')
     item.textContent = `${text}: ${value}`
-    list.appendChild(item)
+    //Use a try catch block --> try appending value to text, otherwise just add it on
+    return item
 }
+
+
 
 const personForm = document.querySelector('#person-form')
 personForm.addEventListener('submit', changedHeading)
