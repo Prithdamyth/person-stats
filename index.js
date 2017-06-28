@@ -8,23 +8,15 @@ function changedHeading(ev){
     const age = f.personAge.value
     const div = document.querySelector('#stats')
     const color = f.textColor.value;
-
-    const nameItem = document.createElement('li')
-    nameItem.textContent = `Name: ${name}`
-    list.appendChild(nameItem)
-
-    const ageItem = document.createElement('li')
-    ageItem.textContent = `Age: ${age}`
-    list.appendChild(ageItem)
+    
+    renderListItem(list, 'Name', name)
+    
+    renderListItem(list, 'Age', age)
     
     const colorItem = document.createElement('li')
     colorItem.textContent = `Color: `
 
-    const colorDiv = document.createElement('div')
-    colorDiv.style.backgroundColor = color;
-    colorDiv.style.width = '6rem'
-    colorDiv.style.height = '3rem'
-    colorItem.appendChild(colorDiv)
+    colorItem.appendChild(renderColor(color))
 
     //colorItem.style.backgroundColor = color;
     list.appendChild(colorItem)
@@ -34,6 +26,20 @@ function changedHeading(ev){
 
     //const color = document.getElementById("color").value;
     list.style.color = color;
+}
+
+function renderColor(color){
+   const colorDiv = document.createElement('div')
+   colorDiv.style.backgroundColor = color
+   colorDiv.style.width = '6rem'
+   colorDiv.style.height = '3rem'
+   return colorDiv
+}
+
+function renderListItem(list, text, value){
+    const item = document.createElement('li')
+    item.textContent = `${text}: ${value}`
+    list.appendChild(item)
 }
 
 const personForm = document.querySelector('#person-form')
