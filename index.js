@@ -1,26 +1,28 @@
 
-function changedHeading(ev){
+function handleSubmit(ev){
     ev.preventDefault()
     
     const f = ev.target
-    const name = f.personName.value
-    const list = document.createElement('ul')
-    const age = f.personAge.value
+	const person = {
+		name: f.personName.value,
+		age: f.personAge.value,
+		favColor: renderColor(f.textColor.value)
+	}
+	const list = renderList(person)
+	
+	
     const div = document.querySelector('#stats')
-    const color = f.textColor.value;
     
-    list.appendChild(renderListItem('Name', name))
-    
-    list.appendChild(renderListItem('Age', age))
-
+    //list.appendChild(renderListItem('Name', name))
+    //list.appendChild(renderListItem('Age', age))
     //colorItem.style.backgroundColor = color;
-    list.appendChild(renderListItem('Color', color))
+    //list.appendChild(renderListItem('Color', color))
     
     //list.textContent = `${name}, ${age}`
     div.appendChild(list)
 
     //const color = document.getElementById("color").value;
-    list.style.color = color;
+    //list.style.color = color;
 }
 
 function renderColor(color){
@@ -33,12 +35,25 @@ function renderColor(color){
 
 function renderListItem(text, value){
     const item = document.createElement('li')
-    item.textContent = `${text}: ${value}`
+    item.textContent = `${text}: `
     //Use a try catch block --> try appending value to text, otherwise just add it on
+	try{
+		item.appendChild(value)
+	}catch (e) {
+		item.textContent += value
+	}
     return item
 }
 
+function renderList(person){
+	const list = document.createElement('ul')
+	Object.keys(person).map((label) => {
+		const item = renderListItem(label, person[label])
+		list.appendChild(item)
+	})
+	return list
+}
 
 
 const personForm = document.querySelector('#person-form')
-personForm.addEventListener('submit', changedHeading)
+personForm.addEventListener('submit', handleSubmit)
